@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "Test Add 2",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "Test Add 3",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "Test Hello",
+      "status": "error",
+      "message": "Method 'return_hello' was not found."
+    }
+  ]
+}

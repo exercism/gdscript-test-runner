@@ -15,9 +15,34 @@ This repository is a [template repository](https://help.github.com/en/github/cre
 
 Once you're happy with your test runner, [open an issue on the exercism/exercism](https://github.com/exercism/exercism/issues/new?assignees=&labels=&template=new-test-runner.md&title=%5BNew+Test+Runner%5D+) to request an official test runner repository for your track.
 
-# Exercism TRACK_NAME_HERE Test Runner
+# Exercism GDScript Test Runner
 
-The Docker image to automatically run tests on TRACK_NAME_HERE solutions submitted to [Exercism].
+The Docker image to automatically run tests on GDScript solutions submitted to [Exercism].
+
+## Test runner file format
+
+There is currently no built-in testing framework available for Godot Engine. Because of that, Exercism uses a custom
+test runner for its GDScript track.
+
+Each test suite consists of a single GDScript file. It's name has to be equal to the name of the tested file, with a `_test` suffix
+(so e.g. for `example_success.gd` the test file is called `example_success_test.gd`). The testing file has to contain a single variable
+called `TEST_CASES`. It has to be an Array of Dictionaries, where each element represents a single test case. Test cases are called
+in the same order that they are defined in the test suite.
+
+The following 4 values are requied for each test case:
+* `test_name`: it identifes the test case, and is added to the corresponding entry in the `results.json` file
+* `method_name`: defines which method is being tested (each test case can only execute a single method)
+* `args`: a list of args to pass to the tested method
+* `expected`: expected value
+
+A full test suite file might look like this:
+
+```
+const TEST_CASES = [
+	{"test_name": "Test 3", "method_name": "add_2_numbers", "args": [1, 2], "expected": 3},
+	{"test_name": "Test 30", "method_name": "add_2_numbers", "args": [10, 20], "expected": 30},
+]
+```
 
 ## Run the test runner
 

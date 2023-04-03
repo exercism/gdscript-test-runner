@@ -5,22 +5,22 @@
     {
       "name": "Test add 1 and 2",
       "status": "fail",
-      "message": "Expected output was '3', actual output was '-1'."
+      "message": "Expected output was '3', actual output was 'Hello!'."
     },
     {
       "name": "Test add 10 and 20",
       "status": "fail",
-      "message": "Expected output was '30', actual output was '-1'."
+      "message": "Expected output was '30', actual output was 'Hello!'."
     },
     {
       "name": "Test add 0 and 3",
       "status": "fail",
-      "message": "Expected output was '3', actual output was '-1'."
+      "message": "Expected output was '3', actual output was 'Hello!'."
     },
     {
       "name": "Test add 0 and 0",
       "status": "fail",
-      "message": "Expected output was '0', actual output was '-1'."
+      "message": "Expected output was '0', actual output was 'Hello!'."
     }
   ]
 }

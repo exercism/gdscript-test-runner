@@ -1,5 +1,6 @@
 {
-  "version": 1,
+  "version": 2,
   "status": "error",
-  "message": "TODO: replace with correct output"
+  "message": "The solution file could not be parsed.",
+  "tests": []
 }

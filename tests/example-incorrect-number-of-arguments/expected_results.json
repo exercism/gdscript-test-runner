@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "Test Too Few Args",
+      "status": "error",
+      "message": "Execution of the method 'add_numbers' has failed. Please make sure that it accepts the correct number of arguments."
+    },
+    {
+      "name": "Test Too Many Args",
+      "status": "error",
+      "message": "Execution of the method 'add_numbers' has failed. Please make sure that it accepts the correct number of arguments."
+    }
+  ]
+}
