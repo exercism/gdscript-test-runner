@@ -33,7 +33,7 @@ echo "${slug}: testing..."
 
 # Run the tests for the provided implementation file and redirect stdout and
 # stderr to capture it
-test_output=$(godot --headless -s bin/script.gd -- $slug $solution_dir $output_dir)
+test_output=$(godot --headless -s bin/script.gd 2>&1 -- $slug $solution_dir $output_dir)
 
 # Write the results.json file based on the exit code of the command that was 
 # just executed that tested the implementation file
