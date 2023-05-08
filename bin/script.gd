@@ -60,6 +60,15 @@ func _init():
 	var method_name = test_suite.METHOD_NAME
 	var test_cases = test_suite.TEST_CASES
 	
+	if not solution.has_method(method_name):
+		# TODO improve the string formatting
+		print(
+			'{"version": 2, "status": "error", "message": ' +
+			'"Method \'%s\' was not found.", "tests": []}' % method_name
+		)
+		quit(1)
+	
+	
 	var test_results = run_tests(solution, method_name, test_cases)
 	
 	var results = {

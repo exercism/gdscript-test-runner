@@ -53,7 +53,7 @@ else
     #      | GREP_COLOR='01;32' grep --color=always -E -e '^.*passed$|$')
 
     # Remove Godot Engine greeting message
-    test_output=`echo $test_output | grep -Po "\{.*\}"`
+    test_output=`echo $test_output | sed 's/ ERROR: .*//' | grep -Po "\{.*\}"`
     jq -n --argjson output "$test_output" '$output' > ${results_file}
 fi
 

@@ -1,5 +1,6 @@
 {
-  "version": 1,
-  "status": "fail",
-  "message": "TODO: replace with correct output"
+  "version": 2,
+  "status": "error",
+  "message": "Method 'add_2_numbers' was not found.",
+  "tests": []
 }
