@@ -29,8 +29,10 @@ func run_tests(solution, method_name, test_cases):
 
 func run_single_test(solution, method_name, args, expected):
 	var output = solution.callv(method_name, args)
-	assert(output == expected, str(output) + " != " + str(expected) + " " + str(args))
-	return OK
+	if (output == expected):
+		return OK
+	else:
+		return ERR_PARSE_ERROR
 
 
 func _init():
