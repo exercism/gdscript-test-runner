@@ -33,9 +33,7 @@ echo "${slug}: testing..."
 
 # Run the tests for the provided implementation file and redirect stdout and
 # stderr to capture it
-test_output=$(false)
-# TODO: substitute "false" with the actual command to run the test:
-# test_output=$(command_to_run_tests 2>&1)
+test_output=$(godot --headless -s bin/script.gd 2>&1 -- $slug $solution_dir $output_dir)
 
 # Write the results.json file based on the exit code of the command that was 
 # just executed that tested the implementation file
@@ -54,7 +52,9 @@ else
     #      | GREP_COLOR='01;31' grep --color=always -E -e '^(ERROR:.*|.*failed)$|$' \
     #      | GREP_COLOR='01;32' grep --color=always -E -e '^.*passed$|$')
 
-    jq -n --arg output "${test_output}" '{version: 1, status: "fail", message: $output}' > ${results_file}
+    # Remove Godot Engine greeting message
+    test_output=`echo $test_output | sed 's/ ERROR: .*//' | grep -Po "\{.*\}"`
+    jq -n --argjson output "$test_output" '$output' > ${results_file}
 fi
 
 echo "${slug}: done"
