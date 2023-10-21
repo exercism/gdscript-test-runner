@@ -3,12 +3,12 @@
   "status": "pass",
   "tests": [
     {
-      "name": "Test One",
+      "name": "test_1_and_2_equals_3",
       "status": "pass",
       "message": null
     },
     {
-      "name": "Test Two",
+      "name": "test_10_and_20_equals_30",
       "status": "pass",
       "message": null
     }

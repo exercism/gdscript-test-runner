@@ -3,14 +3,14 @@
   "status": "fail",
   "tests": [
     {
-      "name": "Test Too Few Args",
+      "name": "test_too_few_args",
       "status": "error",
-      "message": "Execution of the method 'add_numbers' has failed. Please make sure that it accepts the correct number of arguments."
+      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 arguments.\n          at: test_too_few_args (res://tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:2)\n"
     },
     {
-      "name": "Test Too Many Args",
+      "name": "test_too_many_args",
       "status": "error",
-      "message": "Execution of the method 'add_numbers' has failed. Please make sure that it accepts the correct number of arguments."
+      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 arguments.\n          at: test_too_many_args (res://tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:6)\n"
     }
   ]
 }

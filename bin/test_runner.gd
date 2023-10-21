@@ -109,12 +109,9 @@ func check_if_required_files_exist() -> Error:
 
 func clean_up_before_test() -> void:
 	"""
-	Removes the previous `results.json` file and the previous stderr output
-	file, to ensure that the current test suite will not use them.
+	Removes the previous `results.json` file, to ensure that the current test suite will not use it.
 	"""
 	file_utils.remove_results_file(output_dir_path)
-	# TODO: remove this line, update description
-	#file_utils.remove_stderr_file()
 
 
 func load_solution_script() -> Error:

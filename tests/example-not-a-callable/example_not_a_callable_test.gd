@@ -1,3 +1,2 @@
-const TEST_CASES = [
-	{"test_name": "Test One", "method_name": "add_2_numbers", "args": [1, 2], "expected": 3},
-]
+func test_call_a_method(solution_script):
+	return [3, solution_script.add_2_numbers(1, 2)]

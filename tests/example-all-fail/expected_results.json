@@ -3,24 +3,24 @@
   "status": "fail",
   "tests": [
     {
-      "name": "Test add 1 and 2",
+      "name": "test_add_1_and_2",
       "status": "fail",
-      "message": "Expected output was '3', actual output was '-1'."
+      "message": "Expected output was 3, actual output was -1."
     },
     {
-      "name": "Test add 10 and 20",
+      "name": "test_add_10_and_20",
       "status": "fail",
-      "message": "Expected output was '30', actual output was '-1'."
+      "message": "Expected output was 30, actual output was -1."
     },
     {
-      "name": "Test add 0 and 3",
+      "name": "test_add_0_and_3",
       "status": "fail",
-      "message": "Expected output was '3', actual output was '-1'."
+      "message": "Expected output was 3, actual output was -1."
     },
     {
-      "name": "Test add 0 and 0",
+      "name": "test_add_0_and_0",
       "status": "fail",
-      "message": "Expected output was '0', actual output was '-1'."
+      "message": "Expected output was 0, actual output was -1."
     }
   ]
 }

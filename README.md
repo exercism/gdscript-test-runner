@@ -21,27 +21,23 @@ The Docker image to automatically run tests on GDScript solutions submitted to [
 
 ## Test runner file format
 
-There is currently no built-in testing framework available for Godot Engine. Because of that, Exercism uses a custom
-test runner for its GDScript track.
+There is currently no built-in testing framework available for Godot Engine. Because of that, Exercism uses a custom test runner for its GDScript track.
 
-Each test suite consists of a single GDScript file. It's name has to be equal to the name of the tested file, with a `_test` suffix
-(so e.g. for `example_success.gd` the test file is called `example_success_test.gd`). The testing file has to contain a single variable
-called `TEST_CASES`. It has to be an Array of Dictionaries, where each element represents a single test case. Test cases are called
-in the same order that they are defined in the test suite.
+Each test suite consists of a single GDScript file. Its name has to be equal to the name of the tested file, with a `_test` suffix (so e.g. for `example_success.gd` the test file is called `example_success_test.gd`). The test runner will load this file and run all of the methods starting with `test_`, in the same order that they are defined in the GDScript file. Each test method represents a single test case, and the name of the method will be included in the `results.json` file as the name of the test.
 
-The following 4 values are requied for each test case:
-* `test_name`: it identifes the test case, and is added to the corresponding entry in the `results.json` file
-* `method_name`: defines which method is being tested (each test case can only execute a single method)
-* `args`: a list of args to pass to the tested method
-* `expected`: expected value
+Each test case will be called with a single argument. That argument is the solution script, prepared by the user and loaded by the test runner as a Script object. The test case can call any methods of the solution script, as well as perform any setup steps (if necessary).
+
+Each test case is expected to return an Array of 2 elements. The first is the expected value, the second is the value received from calling a user defined method. The test runner will take care of comparing those values and generating an error message, if necessary.
 
 A full test suite file might look like this:
 
 ```
-const TEST_CASES = [
-	{"test_name": "Test 3", "method_name": "add_2_numbers", "args": [1, 2], "expected": 3},
-	{"test_name": "Test 30", "method_name": "add_2_numbers", "args": [10, 20], "expected": 30},
-]
+func test_add_1_and_2(solution_script):
+	return [3, solution_script.add_2_numbers(1, 2)]
+
+
+func test_add_10_and_20(solution_script):
+	return [30, solution_script.add_2_numbers(10, 20)]
 ```
 
 ## Run the test runner

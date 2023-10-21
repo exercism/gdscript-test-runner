@@ -3,9 +3,9 @@
   "status": "fail",
   "tests": [
     {
-      "name": "Test One",
+      "name": "test_call_a_method",
       "status": "error",
-      "message": "'add_2_numbers' is not a callable."
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_not_a_callable.gd)'.\n          at: test_call_a_method (res://tests/example-not-a-callable/example_not_a_callable_test.gd:2)\n"
     }
   ]
 }

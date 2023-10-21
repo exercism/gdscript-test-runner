@@ -1,4 +1,6 @@
-const TEST_CASES = [
-	{"test_name": "Test add 1 and 2", "method_name": "add_2_numbers", "args": [1, 2], "expected": 3},
-	{"test_name": "Test add 10 and 20", "method_name": "add_2_numbers", "args": [10, 20], "expected": 30},
-]
+func test_add_1_and_2(solution_script):
+	return [3, solution_script.add_2_numbers(1, 2)]
+
+
+func test_add_10_and_20(solution_script):
+	return [30, solution_script.add_2_numbers(10, 20)]

@@ -1,5 +1,10 @@
-const TEST_CASES = [
-	{"test_name": "Test String Something", "method_name": "check_something", "args": ["something"], "expected": true},
-	{"test_name": "Test String Nothing", "method_name": "check_something", "args": ["nothing"], "expected": false},
-	{"test_name": "Test Integer", "method_name": "check_something", "args": [10], "expected": false},
-]
+func test_string_something(solution_script):
+	return [true, solution_script.check_something("something")]
+
+
+func test_string_nothing(solution_script):
+	return [false, solution_script.check_something("nothing")]
+
+
+func test_integer(solution_script):
+	return [false, solution_script.check_something(10)]

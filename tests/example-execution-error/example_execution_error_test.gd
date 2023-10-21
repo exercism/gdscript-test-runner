@@ -1,4 +1,6 @@
-const TEST_CASES = [
-	{"test_name": "Test 1", "method_name": "divide", "args": [1], "expected": 1},
-	{"test_name": "Test 0", "method_name": "divide", "args": [0], "expected": false},
-]
+func test_1(solution_script):
+	return [1, solution_script.divide(1)]
+
+
+func test_0(solution_script):
+	return [false, solution_script.divide(0)]

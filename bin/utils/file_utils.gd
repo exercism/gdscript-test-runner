@@ -10,18 +10,18 @@ const EXPECTED_GODOT_ERRORS = [
 	"ERROR: Error saving editor settings to \n   at: save (editor/editor_settings.cpp:1013)\n",
 ]
 
+var error_output_already_processed_length: int = 0
 
-func get_error_message(method_name: String) -> String:
+
+func get_error_message() -> String:
 	"""
-	Generates an error message for the given method. Argument `method_name` is used
-	only for formatting. This method should be used after a test suite execution
-	returns `null` (indicating that the execution was unsuccessful).
+	Checks the contents of the `/tmp/stderr` file, where error output from the
+	currently running test suite should be stored. If there is any relevant output
+	there, this method will return it. If the file is empty, an empty string is returned.
 	
-	This method will check the contents of the `/tmp/stderr` file, where the error
-	output from the currently running test suite should be stored. If there is any
-	relevant output there, this method will include it in the message.
-	
-	If the `/tmp/stderr` file is empty, a generic error message will be returned.
+	This method will remove previously read output from the returned message. It should
+	be called after executing every test, to ensure that the message contains only output
+	relevant for the given test.
 	
 	NOTE: running a Godot instance without full access to certain folders in the
 	home directory (`~/.config`, `~/.local`, `~/.cache`) will result in additional
@@ -32,9 +32,11 @@ func get_error_message(method_name: String) -> String:
 	
 	# The default error message. If there are no errors in `/tmp/stderr`, chances are that the method
 	# was called with the wrong number of arguments.
-	var message = "Execution of the method '{}' has failed. Please make sure that it accepts the correct number of arguments.".format([method_name], "{}")
+	var message = ""
 	
 	var error_output = FileAccess.get_file_as_string("/tmp/stderr")
+	error_output = error_output.erase(0, error_output_already_processed_length)
+	error_output_already_processed_length += len(error_output)
 	
 	# By default, Godot's error messages are printed with colors. To include the output in the
 	# `results.json` file, color markers need to be removed first.
@@ -48,8 +50,7 @@ func get_error_message(method_name: String) -> String:
 	
 	# If there is any error output left, include it in the final message
 	if not error_output.is_empty():
-		message = "Execution of the method '{}' has failed with the following error:\n".format([method_name], "{}")
-		message += error_output
+		message = error_output
 	
 	return message
 
@@ -62,15 +63,6 @@ func remove_results_file(output_dir_path: String) -> Error:
 	"""
 	var results_json_path = output_dir_path.path_join("results.json")
 	return remove_file(results_json_path)
-
-
-func remove_stderr_file() -> Error:
-	"""
-	Removes the `/tmp/stderr` file, where the error output from the currently
-	running script is stored. This prevents the previous error output from
-	accidentally being used for current test suite's error messages.
-	"""
-	return remove_file("/tmp/stderr")
 
 
 func remove_file(file_path: String) -> Error:

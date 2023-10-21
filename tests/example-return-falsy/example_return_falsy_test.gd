@@ -1,6 +1,22 @@
-const TEST_CASES = [
-	{"test_name": "Test 0", "method_name": "return_0", "args": [], "expected": 0},
-	{"test_name": "Test False", "method_name": "return_false", "args": [], "expected": false},
-	{"test_name": "Test []", "method_name": "return_empty_array", "args": [], "expected": []},
-	{"test_name": "Test ''", "method_name": "return_empty_string", "args": [], "expected": ""},
-]
+func test_zero(solution_script):
+	return [0, solution_script.return_0()]
+
+
+func test_false(solution_script):
+	return [false, solution_script.return_false()]
+
+
+func test_empty_array(solution_script):
+	return [[], solution_script.return_empty_array()]
+
+
+func test_empty_string(solution_script):
+	return ["", solution_script.return_empty_string()]
+
+
+func test_null(solution_script):
+	return [null, solution_script.return_null()]
+
+
+func test_nothing(solution_script):
+	return [null, solution_script.return_nothing()]

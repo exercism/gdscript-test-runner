@@ -3,19 +3,19 @@
   "status": "fail",
   "tests": [
     {
-      "name": "Test Add 2",
+      "name": "test_add_2",
       "status": "pass",
       "message": null
     },
     {
-      "name": "Test Add 3",
+      "name": "test_add_3",
       "status": "pass",
       "message": null
     },
     {
-      "name": "Test Hello",
+      "name": "test_hello",
       "status": "error",
-      "message": "Method 'return_hello' was not found."
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'return_hello' in base 'RefCounted (example_multiple_methods_partial_fail.gd)'.\n          at: test_hello (res://tests/example-multiple-methods-partial-fail/example_multiple_methods_partial_fail_test.gd:10)\n"
     }
   ]
 }

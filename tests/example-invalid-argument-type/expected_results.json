@@ -3,19 +3,19 @@
   "status": "fail",
   "tests": [
     {
-      "name": "Test String Something",
+      "name": "test_string_something",
       "status": "pass",
       "message": null
     },
     {
-      "name": "Test String Nothing",
+      "name": "test_string_nothing",
       "status": "pass",
       "message": null
     },
     {
-      "name": "Test Integer",
+      "name": "test_integer",
       "status": "error",
-      "message": "Execution of the method 'check_something' has failed with the following error:\nSCRIPT ERROR: Invalid call. Nonexistent function 'ends_with' in base 'int'.\n          at: check_something (res://tests/example-invalid-argument-type/example_invalid_argument_type.gd:2)\n"
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'ends_with' in base 'int'.\n          at: check_something (res://tests/example-invalid-argument-type/example_invalid_argument_type.gd:3)\n"
     }
   ]
 }

@@ -3,14 +3,14 @@
   "status": "fail",
   "tests": [
     {
-      "name": "Test 1",
+      "name": "test_1",
       "status": "pass",
       "message": null
     },
     {
-      "name": "Test 0",
+      "name": "test_0",
       "status": "error",
-      "message": "Execution of the method 'divide' has failed with the following error:\nSCRIPT ERROR: Division by zero error in operator '/'.\n          at: divide (res://tests/example-execution-error/example_execution_error.gd:2)\n"
+      "message": "SCRIPT ERROR: Division by zero error in operator '/'.\n          at: divide (res://tests/example-execution-error/example_execution_error.gd:2)\n"
     }
   ]
 }

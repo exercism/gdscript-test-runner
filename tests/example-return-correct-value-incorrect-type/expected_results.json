@@ -3,9 +3,9 @@
   "status": "fail",
   "tests": [
     {
-      "name": "Test add 1 and 2",
+      "name": "test_add_1_and_2",
       "status": "fail",
-      "message": "Expected output was '3', actual output was '3'."
+      "message": "Expected output was 3, actual output was '3'."
     }
   ]
 }

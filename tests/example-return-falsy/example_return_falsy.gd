@@ -12,3 +12,11 @@ func return_empty_array():
 
 func return_empty_string():
 	return ""
+
+
+func return_null():
+	return null
+
+
+func return_nothing():
+	pass
