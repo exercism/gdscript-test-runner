@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "status": "pass",
+  "tests": [
+    {
+      "name": "test_zero",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_false",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_empty_array",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_empty_string",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_null",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_nothing",
+      "status": "pass",
+      "message": null
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "test_return_string_correct",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_return_string_incorrect",
+      "status": "error",
+      "message": "SCRIPT ERROR: Trying to return value of type \"int\" from a function which the return type is \"String\".\n          at: return_string (res://tests/example-type-hints/example_type_hints.gd:2)\n"
+    },
+    {
+      "name": "test_accept_int_correct",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_accept_int_incorrect",
+      "status": "error",
+      "message": "SCRIPT ERROR: Invalid type in function 'accept_int' in base 'RefCounted (example_type_hints.gd)'. Cannot convert argument 1 from String to int.\n          at: test_accept_int_incorrect (res://tests/example-type-hints/example_type_hints_test.gd:14)\n"
+    }
+  ]
+}

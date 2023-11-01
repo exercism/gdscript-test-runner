@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "test_1_and_2_equals_3",
+      "status": "error",
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_wrong_method_name.gd)'.\n          at: test_1_and_2_equals_3 (res://tests/example-wrong-method-name/example_wrong_method_name_test.gd:2)\n"
+    },
+    {
+      "name": "test_10_and_20_and_40_equals_70",
+      "status": "error",
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_3_numbers' in base 'RefCounted (example_wrong_method_name.gd)'.\n          at: test_10_and_20_and_40_equals_70 (res://tests/example-wrong-method-name/example_wrong_method_name_test.gd:6)\n"
+    }
+  ]
+}

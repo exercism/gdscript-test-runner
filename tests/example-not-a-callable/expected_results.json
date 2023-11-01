@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "test_call_a_method",
+      "status": "error",
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_not_a_callable.gd)'.\n          at: test_call_a_method (res://tests/example-not-a-callable/example_not_a_callable_test.gd:2)\n"
+    }
+  ]
+}

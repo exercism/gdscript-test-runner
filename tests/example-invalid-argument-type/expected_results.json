@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "test_string_something",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_string_nothing",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_integer",
+      "status": "error",
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'ends_with' in base 'int'.\n          at: check_something (res://tests/example-invalid-argument-type/example_invalid_argument_type.gd:3)\n"
+    }
+  ]
+}

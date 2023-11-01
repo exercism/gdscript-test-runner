@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "status": "fail",
+  "tests": [
+    {
+      "name": "test_1",
+      "status": "pass",
+      "message": null
+    },
+    {
+      "name": "test_0",
+      "status": "error",
+      "message": "SCRIPT ERROR: Division by zero error in operator '/'.\n          at: divide (res://tests/example-execution-error/example_execution_error.gd:2)\n"
+    }
+  ]
+}

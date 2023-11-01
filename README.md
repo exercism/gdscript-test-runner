@@ -15,9 +15,30 @@ This repository is a [template repository](https://help.github.com/en/github/cre
 
 Once you're happy with your test runner, [open an issue on the exercism/exercism](https://github.com/exercism/exercism/issues/new?assignees=&labels=&template=new-test-runner.md&title=%5BNew+Test+Runner%5D+) to request an official test runner repository for your track.
 
-# Exercism TRACK_NAME_HERE Test Runner
+# Exercism GDScript Test Runner
 
-The Docker image to automatically run tests on TRACK_NAME_HERE solutions submitted to [Exercism].
+The Docker image to automatically run tests on GDScript solutions submitted to [Exercism].
+
+## Test runner file format
+
+There is currently no built-in testing framework available for Godot Engine. Because of that, Exercism uses a custom test runner for its GDScript track.
+
+Each test suite consists of a single GDScript file. Its name has to be equal to the name of the tested file, with a `_test` suffix (so e.g. for `example_success.gd` the test file is called `example_success_test.gd`). The test runner will load this file and run all of the methods starting with `test_`, in the same order that they are defined in the GDScript file. Each test method represents a single test case, and the name of the method will be included in the `results.json` file as the name of the test.
+
+Each test case will be called with a single argument. That argument is the solution script, prepared by the user and loaded by the test runner as a Script object. The test case can call any methods of the solution script, as well as perform any setup steps (if necessary).
+
+Each test case is expected to return an Array of 2 elements. The first is the expected value, the second is the value received from calling a user defined method. The test runner will take care of comparing those values and generating an error message, if necessary.
+
+A full test suite file might look like this:
+
+```
+func test_add_1_and_2(solution_script):
+	return [3, solution_script.add_2_numbers(1, 2)]
+
+
+func test_add_10_and_20(solution_script):
+	return [30, solution_script.add_2_numbers(10, 20)]
+```
 
 ## Run the test runner
 
