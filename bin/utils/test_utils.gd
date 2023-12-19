@@ -28,6 +28,7 @@ func run_tests(solution_script: Object, test_suite_script: Object) -> Array:
 	for method in test_suite_script.get_method_list():
 		if method["name"].begins_with("test_"):
 			var test_method_name = method["name"]
+			print("-> " + test_method_name)
 			var test_method = test_suite_script.get(test_method_name)
 			
 			var output = test_method.call(solution_script)
