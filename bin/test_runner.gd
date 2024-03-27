@@ -149,16 +149,25 @@ func run_tests() -> void:
 	`results.json` file in the output dir.
 	"""
 	var test_results = test_utils.run_tests(solution_script, test_suite_script)
+	var results = {}
 	
-	var results = {
-		"status": "pass",
-		"tests": test_results,
-	}
-	
-	# If any of the tests failed, change the global status to `fail`
-	for test_result in test_results:
-		if test_result["status"] != "pass":
-			results["status"] = "fail"
-			break
+	# Check if any tests were executed
+	if len(test_results) == 0:
+		results = {
+			"status": "error",
+			"message": "No tests were executed.",
+			"tests": [],
+		}
+	else:
+		results = {
+			"status": "pass",
+			"tests": test_results,
+		}
+		
+		# If any of the tests failed, change the global status to `fail`
+		for test_result in test_results:
+			if test_result["status"] != "pass":
+				results["status"] = "fail"
+				break
 	
 	file_utils.write_results_file(results, output_dir_path)
