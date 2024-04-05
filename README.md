@@ -27,17 +27,17 @@ Each test suite consists of a single GDScript file. Its name has to be equal to 
 
 Each test case will be called with a single argument. That argument is the solution script, prepared by the user and loaded by the test runner as a Script object. The test case can call any methods of the solution script, as well as perform any setup steps (if necessary).
 
-Each test case is expected to return an Array of 2 elements. The first is the expected value, the second is the value received from calling a user defined method. The test runner will take care of comparing those values and generating an error message, if necessary.
+Each test case is expected to return an Array of 2 elements. The first is the value received from calling a user defined method, the second is the expected value. The test runner will take care of comparing those values and generating an error message, if necessary.
 
 A full test suite file might look like this:
 
 ```
 func test_add_1_and_2(solution_script):
-	return [3, solution_script.add_2_numbers(1, 2)]
+	return [solution_script.add_2_numbers(1, 2), 3]
 
 
 func test_add_10_and_20(solution_script):
-	return [30, solution_script.add_2_numbers(10, 20)]
+	return [solution_script.add_2_numbers(10, 20), 30]
 ```
 
 ## Run the test runner

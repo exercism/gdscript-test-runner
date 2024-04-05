@@ -19,8 +19,8 @@ func run_tests(solution_script: Object, test_suite_script: Object) -> Array:
 	`status` will be set to 'error'. The test will also receive an 'error' status
 	if calling the `test_` method returned null (which indicates execution issues).
 	
-	Otherwise, the `test_` method should return an Array of 2 elements: the expected value,
-	and the actual value. The values will be compared and if they are the same, the test will
+	Otherwise, the `test_` method should return an Array of 2 elements: the actual value,
+	and the expected value. The values will be compared and if they are the same, the test will
 	pass. Otherwise, it will fail, with a relevant message being set by this method.
 	"""
 	var test_results = []
@@ -41,8 +41,8 @@ func run_tests(solution_script: Object, test_suite_script: Object) -> Array:
 					"message": error_message,
 				})
 			else:
-				var expected = output[0]
-				var actual = output[1]
+				var actual = output[0]
+				var expected = output[1]
 				
 				var passed = (
 					typeof(actual) == typeof(expected) and
@@ -54,7 +54,7 @@ func run_tests(solution_script: Object, test_suite_script: Object) -> Array:
 				if error_message.is_empty():
 					status = "pass" if passed else "fail"
 					error_message = null if passed else get_failed_test_message(
-						expected, actual
+						actual, expected
 					)
 				
 				test_results.append({
@@ -66,22 +66,22 @@ func run_tests(solution_script: Object, test_suite_script: Object) -> Array:
 	return test_results
 
 
-func get_failed_test_message(expected, actual) -> String:
+func get_failed_test_message(actual, expected) -> String:
 	"""
 	Generates a message for a failed test. If given values are strings,
 	this method will wrap them in single quotes, to distinguish from
 	other types, like integers (e.g. '3' vs 3).
 	
-	This method should be used if the expected and actual values for a
+	This method should be used if the actual and expected values for a
 	given test are different, or if they have different types.
 	"""
 	var values = []
 	
-	for value in [expected, actual]:
+	for value in [actual, expected]:
 		var formatted_value = str(value)
 		if typeof(value) == TYPE_STRING:
 			formatted_value = "'{0}'".format([formatted_value])
 		values.append(formatted_value)
 	
-	return "Expected output was {0}, actual output was {1}.".format(values)
+	return "Expected output was {1}, actual output was {0}.".format(values)
 
