@@ -6,11 +6,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Download and unzip Godot v4.1.1
-RUN wget https://downloads.tuxfamily.org/godotengine/4.1.1/Godot_v4.1.1-stable_linux.x86_64.zip && \
-    unzip Godot_v4.1.1-stable_linux.x86_64.zip && \
-    mv Godot_v4.1.1-stable_linux.x86_64 /usr/bin/godot && \
-    rm Godot_v4.1.1-stable_linux.x86_64.zip
+# Download and unzip Godot v4.4.1
+RUN wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip && \
+    unzip Godot_v4.4.1-stable_linux.x86_64.zip && \
+    mv Godot_v4.4.1-stable_linux.x86_64 /usr/bin/godot && \
+    rm Godot_v4.4.1-stable_linux.x86_64.zip
 
 WORKDIR /opt/test-runner
 COPY . .
