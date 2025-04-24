@@ -30,9 +30,9 @@ results_file="${output_dir}/results.json"
 mkdir -p "${output_dir}"
 
 # Create Godot directories
-export XDG_CONFIG_HOME=/tmp/.config
-export XDG_DATA_HOME=/tmp/.local/share
-export XDG_CACHE_HOME=/tmp/.cache
+export XDG_CONFIG_HOME=/tmp/config
+export XDG_DATA_HOME=/tmp/local/share
+export XDG_CACHE_HOME=/tmp/cache
 
 mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME"
 
