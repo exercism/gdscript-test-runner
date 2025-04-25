@@ -29,6 +29,13 @@ results_file="${output_dir}/results.json"
 # Create the output directory if it doesn't exist
 mkdir -p "${output_dir}"
 
+# Create Godot directories
+export XDG_CONFIG_HOME=/tmp/config
+export XDG_DATA_HOME=/tmp/local/share
+export XDG_CACHE_HOME=/tmp/cache
+
+mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME"
+
 echo "${slug}: testing..."
 
 # Run the tests for the provided implementation file
