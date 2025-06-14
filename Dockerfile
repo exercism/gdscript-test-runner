@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 RUN apt-get update && \
-    apt-get install -y jq coreutils wget zip libfontconfig1 && \
+    apt-get install -y coreutils wget zip libfontconfig1 && \
     apt-get purge --auto-remove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
