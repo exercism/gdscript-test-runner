@@ -12,6 +12,6 @@ RUN wget https://github.com/godotengine/godot/releases/download/4.4.1-stable/God
     mv Godot_v4.4.1-stable_linux.x86_64 /usr/bin/godot && \
     rm Godot_v4.4.1-stable_linux.x86_64.zip
 
-WORKDIR /opt/test-runner
+WORKDIR /opt/exercism/gdscript/test-runner
 COPY . .
-ENTRYPOINT ["/opt/test-runner/bin/run.sh"]
+ENTRYPOINT ["/opt/exercism/gdscript/test-runner/bin/run.sh"]
