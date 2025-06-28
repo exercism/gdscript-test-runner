@@ -22,8 +22,8 @@ if [ ! -f "${slug//-/_}.gd" ]; then
     echo "$general_help_msg"
     exit 1
 fi
-if [ ! -f "/opt/exercism/gdscript/test-runner/bin/run.sh" ]; then
-    echo "Missing test runner file: /opt/exercism/gdscript/test-runner/bin/run.sh"
+if [ ! -f "/opt/exercism/gdscript/test-runner/bin/test_runner.gd" ]; then
+    echo "Missing test runner file: /opt/exercism/gdscript/test-runner/bin/test_runner.gd"
     echo "$general_help_msg"
     exit 1
 fi
