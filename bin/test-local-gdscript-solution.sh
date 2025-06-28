@@ -33,7 +33,7 @@ output_dir="${solution_dir}/.test-output"
 results_file="${output_dir}/results.json"
 mkdir -p "${output_dir}"
 
-(cd /opt/exercism/gdscript/test-runner && bin/run.sh "$slug" "$solution_dir" "$output_dir") || {
+(cd /opt/exercism/gdscript/test-runner && godot --headless -s bin/test_runner.gd 2>/tmp/stderr -- "${slug}" "${solution_dir}" "${output_dir}") || {
     echo "Test runner script failed."
     exit 1
 }
