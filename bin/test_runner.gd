@@ -63,13 +63,17 @@ func parse_args() -> Error:
 	global variables, based on the given args:
 	* `solution_script_path`
 	* `test_suite_script_path`
-	* `output_dir_path`
+	* `output_dir_path` (optional for local test runner, required for standard JSON test runner behaviour)
 	"""
 	var args = OS.get_cmdline_user_args()
 	
-	if len(args) != 3:
+	# This script still conforms to [1] but allows 2 arguments for a local test
+	# runner with non-JSON output to eliminate dependence on 'jq'
+	#
+	# [1] https://github.com/exercism/docs/blob/main/building/tooling/test-runners/interface.md#execution
+	if len(args) not in [2,3]:
 		push_error(
-			"The scrips needs exactly 3 arguments, was called with %s: %s" % [
+			"The script needs exactly 2 or exactly 3 arguments, was called with %s: %s" % [
 				len(args), str(args)
 			]
 		)
@@ -77,7 +81,8 @@ func parse_args() -> Error:
 	
 	var slug = args[0]
 	var solution_dir_path = args[1]
-	output_dir_path = args[2]
+	if len(args) == 3:
+		output_dir_path = args[2]
 	
 	# Test folders use dashes, but test files use underscores
 	var gdscript_path = solution_dir_path.path_join(slug.replace("-", "_"))
@@ -127,7 +132,7 @@ func load_solution_script() -> Error:
 			"message": "The solution file could not be parsed.",
 			"tests": [],
 		}
-		file_utils.write_results_file(results, output_dir_path)
+		file_utils.output_results(results, output_dir_path)
 		return ERR_PARSE_ERROR
 	
 	return OK
@@ -170,4 +175,4 @@ func run_tests() -> void:
 				results["status"] = "fail"
 				break
 	
-	file_utils.write_results_file(results, output_dir_path)
+	file_utils.output_results(results, output_dir_path)

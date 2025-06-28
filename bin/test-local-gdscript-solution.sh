@@ -33,17 +33,7 @@ output_dir="${solution_dir}/.test-output"
 results_file="${output_dir}/results.json"
 mkdir -p "${output_dir}"
 
-(cd /opt/exercism/gdscript/test-runner && godot --headless -s bin/test_runner.gd 2>/tmp/stderr -- "${slug}" "${solution_dir}" "${output_dir}") || {
+(cd /opt/exercism/gdscript/test-runner && godot --headless -s bin/test_runner.gd -- "${slug}" "${solution_dir}") || {
     echo "Test runner script failed."
     exit 1
 }
-
-test_status="$(jq -r '.status' "${results_file}")"
-if [ "$test_status" != "pass" ]; then
-    echo "Tests for $slug have failed:"
-    cat "${results_file}"
-    exit 1
-else
-    echo
-    echo "Tests for $slug passed!"
-fi
