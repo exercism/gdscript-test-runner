@@ -29,8 +29,6 @@ if [ ! -f "/opt/exercism/gdscript/test-runner/bin/test_runner.gd" ]; then
 fi
 
 solution_dir="$(pwd)"
-output_dir="${solution_dir}/.test-output"
-mkdir -p "${output_dir}"
 
 (cd /opt/exercism/gdscript/test-runner && godot --headless -s bin/test_runner.gd -- "${slug}" "${solution_dir}") || {
     echo "Test runner script failed."
