@@ -30,7 +30,7 @@ fi
 
 solution_dir="$(pwd)"
 
-(cd /opt/exercism/gdscript/test-runner && godot --headless -s bin/test_runner.gd -- "${slug}" "${solution_dir}") || {
+(cd /opt/exercism/gdscript/test-runner && godot --headless -s bin/test_runner.gd -- "$slug" "$solution_dir") || {
     echo "Test runner script failed."
     exit 1
 }
