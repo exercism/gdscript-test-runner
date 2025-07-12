@@ -38,7 +38,15 @@ mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME"
 
 echo "${slug}: testing..."
 
+# Switch to where the script lives in case called from elsewhere
+OLD_DIR=$(pwd)
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+cd "$SCRIPT_DIR" || exit 1
+
 # Run the tests for the provided implementation file
-godot --headless -s bin/test_runner.gd 2>/tmp/stderr -- "${slug}" "${solution_dir}" "${output_dir}"
+godot --headless -s ./test_runner.gd 2>/tmp/stderr -- "${slug}" "${solution_dir}" "${output_dir}"
+
+# Switch back to calling dir
+cd "$OLD_DIR" || exit 1
 
 echo "${slug}: done"
