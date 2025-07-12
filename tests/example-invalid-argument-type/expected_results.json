@@ -15,7 +15,7 @@
     {
       "name": "test_integer",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'ends_with' in base 'int'.\n          at: check_something (res://tests/example-invalid-argument-type/example_invalid_argument_type.gd:3)\n"
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'ends_with' in base 'int'.\n          at: check_something (/opt/exercism/gdscript/test-runner/tests/example-invalid-argument-type/example_invalid_argument_type.gd:3)\n"
     }
   ]
 }

@@ -5,12 +5,12 @@
     {
       "name": "test_too_few_args",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 arguments.\n          at: test_too_few_args (res://tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:2)\n"
+      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 arguments.\n          at: test_too_few_args (/opt/exercism/gdscript/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:2)\n"
     },
     {
       "name": "test_too_many_args",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 arguments.\n          at: test_too_many_args (res://tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:6)\n"
+      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 arguments.\n          at: test_too_many_args (/opt/exercism/gdscript/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:6)\n"
     }
   ]
 }

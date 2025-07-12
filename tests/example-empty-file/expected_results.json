@@ -5,12 +5,12 @@
     {
       "name": "test_add_1_and_2",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_empty_file.gd)'.\n          at: test_add_1_and_2 (res://tests/example-empty-file/example_empty_file_test.gd:2)\n"
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_empty_file.gd)'.\n          at: test_add_1_and_2 (/opt/exercism/gdscript/test-runner/tests/example-empty-file/example_empty_file_test.gd:2)\n"
     },
     {
       "name": "test_add_10_and_20",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_empty_file.gd)'.\n          at: test_add_10_and_20 (res://tests/example-empty-file/example_empty_file_test.gd:6)\n"
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_empty_file.gd)'.\n          at: test_add_10_and_20 (/opt/exercism/gdscript/test-runner/tests/example-empty-file/example_empty_file_test.gd:6)\n"
     }
   ]
 }
