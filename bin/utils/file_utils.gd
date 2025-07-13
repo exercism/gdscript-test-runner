@@ -89,6 +89,37 @@ func load_script(script_path: String) -> Object:
 	return script
 
 
+func output_results(results: Dictionary, output_dir_path: String) -> Error:
+	"""
+	If output_dir_path is empty, outputs friendly-formatted test results to
+	stdout.
+
+	Otherwise, writes JSON results to results.json in the given path.
+	"""
+	if output_dir_path == "":
+		return print_friendly_results(results)
+	else:
+		return write_results_file(results, output_dir_path)
+
+
+func print_friendly_results(results: Dictionary) -> Error:
+	"""
+	Prints rich results to stdout.
+	"""
+	var rich_results = [""]
+	if results.status == "pass":
+		rich_results.push_back("[color=yellow]Exercise passed!  Nicely done![/color]")
+	else:
+		rich_results.push_back("Exercise has at least one failed test:")
+		for test in results.tests:
+			if test.status == "pass":
+				rich_results.push_back(" %s [color=yellow]passed ✔[/color]" % test.name)
+			else:
+				rich_results.push_back(" %s [color=pink]failed: %s[/color]" % [test.name, test.message])
+	print_rich("\n".join(rich_results))
+	return OK
+
+
 func write_results_file(results: Dictionary, output_dir_path: String) -> Error:
 	"""
 	Saves a dictionary as a `results.json` file in the output directory. The file
