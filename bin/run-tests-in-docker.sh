@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Synopsis:
-# Test the test runner Docker image by running it against a predefined set of 
+# Test the test runner Docker image by running it against a predefined set of
 # solutions with an expected output.
 # The test runner Docker image is built automatically.
 
@@ -16,16 +16,16 @@
 set -e
 
 # Build the Docker image
-docker build --rm -t exercism/test-runner .
+docker build --rm -t exercism/gdscript-test-runner .
 
 # Run the Docker image using the settings mimicking the production environment
 docker run \
     --rm \
     --network none \
     --read-only \
-    --mount type=bind,src="${PWD}/tests",dst=/opt/exercism/gdscript/test-runner/tests \
+    --mount type=bind,src="${PWD}/tests",dst=/opt/test-runner/tests \
     --mount type=tmpfs,dst=/tmp \
-    --volume "${PWD}/bin/run-tests.sh:/opt/exercism/gdscript/test-runner/bin/run-tests.sh" \
-    --workdir /opt/exercism/gdscript/test-runner \
-    --entrypoint /opt/exercism/gdscript/test-runner/bin/run-tests.sh \
-    exercism/test-runner
+    --volume "${PWD}/bin/run-tests.sh:/opt/test-runner/bin/run-tests.sh" \
+    --workdir /opt/test-runner \
+    --entrypoint /opt/test-runner/bin/run-tests.sh \
+    exercism/gdscript-test-runner

@@ -15,7 +15,7 @@
     {
       "name": "test_integer",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'ends_with' in base 'int'.\n          at: check_something (/opt/exercism/gdscript/test-runner/tests/example-invalid-argument-type/example_invalid_argument_type.gd:3)\n"
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'ends_with' in base 'int'.\n          at: check_something (/opt/test-runner/tests/example-invalid-argument-type/example_invalid_argument_type.gd:3)\n          GDScript backtrace (most recent call first):\n              [0] check_something (/opt/test-runner/tests/example-invalid-argument-type/example_invalid_argument_type.gd:3)\n              [1] test_integer (/opt/test-runner/tests/example-invalid-argument-type/example_invalid_argument_type_test.gd:10)\n              [2] run_tests (res://utils/test_utils.gd:34)\n              [3] run_tests (res://test_runner.gd:156)\n              [4] _init (res://test_runner.gd:35)\n"
     }
   ]
 }

@@ -2,7 +2,7 @@
 set -e
 
 # Script for testing a student's local solution to a single GDScript exercise.
-# 
+#
 # This script is intended to be run from any exercise subdirectory from the
 # Exercism GDScript track, but can live one directory higher than the
 # exercise subdirectories for convenience.
@@ -22,15 +22,15 @@ if [ ! -f "${slug//-/_}.gd" ]; then
     echo "$general_help_msg"
     exit 1
 fi
-if [ ! -f "/opt/exercism/gdscript/test-runner/bin/test_runner.gd" ]; then
-    echo "Missing test runner file: /opt/exercism/gdscript/test-runner/bin/test_runner.gd"
+if [ ! -f "/opt/test-runner/bin/test_runner.gd" ]; then
+    echo "Missing test runner file: /opt/test-runner/bin/test_runner.gd"
     echo "$general_help_msg"
     exit 1
 fi
 
 solution_dir="$(pwd)"
 
-(cd /opt/exercism/gdscript/test-runner && godot --headless -s bin/test_runner.gd -- "$slug" "$solution_dir") || {
+(cd /opt/test-runner && godot --headless -s bin/test_runner.gd -- "$slug" "$solution_dir") || {
     echo "Test runner script failed."
     exit 1
 }
