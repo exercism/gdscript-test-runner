@@ -5,12 +5,14 @@
     {
       "name": "test_add_1_and_2",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.add_2_numbers(1, 2), 3]"
     },
     {
       "name": "test_add_10_and_20",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.add_2_numbers(10, 20), 30]"
     }
   ]
 }

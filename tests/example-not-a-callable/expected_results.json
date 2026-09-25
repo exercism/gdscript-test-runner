@@ -5,7 +5,7 @@
     {
       "name": "test_call_a_method",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_not_a_callable.gd)'.\n          at: test_call_a_method (/opt/test-runner/tests/example-not-a-callable/example_not_a_callable_test.gd:2)\n          GDScript backtrace (most recent call first):\n              [0] test_call_a_method (/opt/test-runner/tests/example-not-a-callable/example_not_a_callable_test.gd:2)\n              [1] run_tests (res://utils/test_utils.gd:34)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'add_2_numbers' in base 'RefCounted (example_not_a_callable.gd)'.\n          at: test_call_a_method (/opt/test-runner/tests/example-not-a-callable/example_not_a_callable_test.gd:2)\n          GDScript backtrace (most recent call first):\n              [0] test_call_a_method (/opt/test-runner/tests/example-not-a-callable/example_not_a_callable_test.gd:2)\n              [1] run_tests (res://utils/test_utils.gd:51)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
     }
   ]
 }

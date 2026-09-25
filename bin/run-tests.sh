@@ -21,6 +21,8 @@ for test_dir in tests/*; do
 
     bin/run.sh "${test_dir_name}" "${test_dir_path}" "${test_dir_path}"
 
+    # Uncomment to update the `expected_results.json` files.
+    # cp "${actual_results}" "${expected_results}"
     if [[ -e "${actual_results}" ]]; then
         echo "${test_dir_name}: comparing results.json to expected_results.json"
         if ! diff "${actual_results}" "${expected_results}"; then

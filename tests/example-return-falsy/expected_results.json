@@ -5,32 +5,38 @@
     {
       "name": "test_zero",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.return_0(), 0]"
     },
     {
       "name": "test_false",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.return_false(), false]"
     },
     {
       "name": "test_empty_array",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.return_empty_array(), []]"
     },
     {
       "name": "test_empty_string",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.return_empty_string(), \"\"]"
     },
     {
       "name": "test_null",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.return_null(), null]"
     },
     {
       "name": "test_nothing",
       "status": "pass",
-      "message": null
+      "message": null,
+      "test_code": "assert_equal [solution_script.return_nothing(), null]"
     }
   ]
 }
