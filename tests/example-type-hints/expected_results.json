@@ -10,7 +10,7 @@
     {
       "name": "test_return_string_incorrect",
       "status": "error",
-      "message": "SCRIPT ERROR: Trying to return value of type \"int\" from a function whose return type is \"String\".\n          at: return_string (/opt/exercism/gdscript/test-runner/tests/example-type-hints/example_type_hints.gd:2)\n"
+      "message": "SCRIPT ERROR: Trying to return a value of type \"int\" from a function whose return type is \"String\".\n          at: return_string (/opt/test-runner/tests/example-type-hints/example_type_hints.gd:2)\n          GDScript backtrace (most recent call first):\n              [0] return_string (/opt/test-runner/tests/example-type-hints/example_type_hints.gd:2)\n              [1] test_return_string_incorrect (/opt/test-runner/tests/example-type-hints/example_type_hints_test.gd:6)\n              [2] run_tests (res://utils/test_utils.gd:34)\n              [3] run_tests (res://test_runner.gd:156)\n              [4] _init (res://test_runner.gd:35)\n"
     },
     {
       "name": "test_accept_int_correct",
@@ -20,7 +20,7 @@
     {
       "name": "test_accept_int_incorrect",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid type in function 'accept_int' in base 'RefCounted (example_type_hints.gd)'. Cannot convert argument 1 from String to int.\n          at: test_accept_int_incorrect (/opt/exercism/gdscript/test-runner/tests/example-type-hints/example_type_hints_test.gd:14)\n"
+      "message": "SCRIPT ERROR: Invalid type in function 'accept_int' in base 'RefCounted (example_type_hints.gd)'. Cannot convert argument 1 from String to int.\n          at: test_accept_int_incorrect (/opt/test-runner/tests/example-type-hints/example_type_hints_test.gd:14)\n          GDScript backtrace (most recent call first):\n              [0] test_accept_int_incorrect (/opt/test-runner/tests/example-type-hints/example_type_hints_test.gd:14)\n              [1] run_tests (res://utils/test_utils.gd:34)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
     }
   ]
 }
