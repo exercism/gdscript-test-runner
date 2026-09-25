@@ -9,7 +9,7 @@ func extract_method(script: Object, method_name: String) -> String:
 		if not in_func:
 			if line.begins_with("func %s(" % method_name):
 				in_func = true
-		elif not line.begins_with("\t"):
+		elif not line.begins_with("\t") and not line.begins_with(" "):
 			break
 		else:
 			parts.append(line)
