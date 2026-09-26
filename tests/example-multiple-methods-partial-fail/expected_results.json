@@ -17,7 +17,7 @@
     {
       "name": "test_hello",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'return_hello' in base 'RefCounted (example_multiple_methods_partial_fail.gd)'.\n          at: test_hello (/opt/test-runner/tests/example-multiple-methods-partial-fail/example_multiple_methods_partial_fail_test.gd:10)\n          GDScript backtrace (most recent call first):\n              [0] test_hello (/opt/test-runner/tests/example-multiple-methods-partial-fail/example_multiple_methods_partial_fail_test.gd:10)\n              [1] run_tests (res://utils/test_utils.gd:51)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
+      "message": "SCRIPT ERROR: Invalid call. Nonexistent function 'return_hello' in base 'RefCounted (example_multiple_methods_partial_fail.gd)'.\n          at: test_hello (/opt/test-runner/tests/example-multiple-methods-partial-fail/example_multiple_methods_partial_fail_test.gd:10)\n          GDScript backtrace (most recent call first):\n              [0] test_hello (/opt/test-runner/tests/example-multiple-methods-partial-fail/example_multiple_methods_partial_fail_test.gd:10)\n              [1] run_tests (res://utils/test_utils.gd:51)\n              [2] run_tests (res://test_runner.gd:161)\n              [3] _init (res://test_runner.gd:37)\n"
     }
   ]
 }

@@ -44,7 +44,7 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$SCRIPT_DIR" || exit 1
 
 # Run the tests for the provided implementation file
-godot --headless -s ./test_runner.gd 2>/tmp/stderr -- "${slug}" "${solution_dir}" "${output_dir}"
+godot --headless -s ./test_runner.gd 2>/tmp/stderr -- --all "${slug}" "${solution_dir}" "${output_dir}"
 
 # Switch back to calling dir
 cd "$OLD_DIR" || exit 1

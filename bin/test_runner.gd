@@ -13,6 +13,8 @@ var test_suite_script_path: String = ""
 var solution_script: Object = null
 var test_suite_script: Object = null
 
+var run_all: bool = false
+
 
 func _init():
 	load_utils_scripts()
@@ -66,6 +68,9 @@ func parse_args() -> Error:
 	* `output_dir_path` (optional for local test runner, required for standard JSON test runner behaviour)
 	"""
 	var args = OS.get_cmdline_user_args()
+	if args[0] == "--all":
+		run_all = true
+		args.remove_at(0)
 	
 	# This script still conforms to [1] but allows 2 arguments for a local test
 	# runner with non-JSON output to eliminate dependence on 'jq'
@@ -174,5 +179,24 @@ func run_tests() -> void:
 			if test_result["status"] != "pass":
 				results["status"] = "fail"
 				break
+
+		if not run_all and results["status"] != "pass":
+			var success_count: int = 0
+			for test_result in test_results:
+				if test_result["status"] == "pass":
+					success_count += 1
+
+			var has_failure = false
+			var filtered_results = []
+			for test_result in test_results:
+				if test_result["status"] == "pass":
+					filtered_results.append(test_result)
+				elif not has_failure:
+					has_failure = true
+					test_result["message"] = "Passes %d/%d tests. First failure: %s" % [
+						success_count, len(test_results), test_result["message"],
+					]
+					filtered_results.append(test_result)
+			results["tests"] = filtered_results
 	
 	file_utils.output_results(results, output_dir_path)

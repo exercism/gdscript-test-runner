@@ -11,7 +11,7 @@
     {
       "name": "test_0",
       "status": "error",
-      "message": "SCRIPT ERROR: Division by zero error in operator '/'.\n          at: divide (/opt/test-runner/tests/example-execution-error/example_execution_error.gd:2)\n          GDScript backtrace (most recent call first):\n              [0] divide (/opt/test-runner/tests/example-execution-error/example_execution_error.gd:2)\n              [1] test_0 (/opt/test-runner/tests/example-execution-error/example_execution_error_test.gd:6)\n              [2] run_tests (res://utils/test_utils.gd:51)\n              [3] run_tests (res://test_runner.gd:156)\n              [4] _init (res://test_runner.gd:35)\n",
+      "message": "SCRIPT ERROR: Division by zero error in operator '/'.\n          at: divide (/opt/test-runner/tests/example-execution-error/example_execution_error.gd:2)\n          GDScript backtrace (most recent call first):\n              [0] divide (/opt/test-runner/tests/example-execution-error/example_execution_error.gd:2)\n              [1] test_0 (/opt/test-runner/tests/example-execution-error/example_execution_error_test.gd:6)\n              [2] run_tests (res://utils/test_utils.gd:51)\n              [3] run_tests (res://test_runner.gd:161)\n              [4] _init (res://test_runner.gd:37)\n",
       "test_code": "assert_equal [solution_script.divide(0), false]"
     }
   ]
