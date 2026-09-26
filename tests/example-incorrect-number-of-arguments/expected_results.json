@@ -5,12 +5,12 @@
     {
       "name": "test_too_few_args",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 argument(s).\n          at: test_too_few_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:2)\n          GDScript backtrace (most recent call first):\n              [0] test_too_few_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:2)\n              [1] run_tests (res://utils/test_utils.gd:34)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
+      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 argument(s).\n          at: test_too_few_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:2)\n          GDScript backtrace (most recent call first):\n              [0] test_too_few_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:2)\n              [1] run_tests (res://utils/test_utils.gd:51)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
     },
     {
       "name": "test_too_many_args",
       "status": "error",
-      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 argument(s).\n          at: test_too_many_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:6)\n          GDScript backtrace (most recent call first):\n              [0] test_too_many_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:6)\n              [1] run_tests (res://utils/test_utils.gd:34)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
+      "message": "SCRIPT ERROR: Invalid call to function 'add_numbers' in base 'RefCounted (example_incorrect_number_of_arguments.gd)'. Expected 2 argument(s).\n          at: test_too_many_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:6)\n          GDScript backtrace (most recent call first):\n              [0] test_too_many_args (/opt/test-runner/tests/example-incorrect-number-of-arguments/example_incorrect_number_of_arguments_test.gd:6)\n              [1] run_tests (res://utils/test_utils.gd:51)\n              [2] run_tests (res://test_runner.gd:156)\n              [3] _init (res://test_runner.gd:35)\n"
     }
   ]
 }

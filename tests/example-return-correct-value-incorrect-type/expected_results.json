@@ -5,7 +5,8 @@
     {
       "name": "test_add_1_and_2",
       "status": "fail",
-      "message": "Expected output was 3, actual output was '3'."
+      "message": "Expected output was 3, actual output was '3'.",
+      "test_code": "assert_equal [solution_script.add_2_numbers(1, 2), 3]"
     }
   ]
 }
