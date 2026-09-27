@@ -24,16 +24,19 @@ func _init():
 	# in each method.
 	for setup_step in [
 		parse_args,
+		check_stderr,
 		check_if_required_files_exist,
 		load_solution_script
 	]:
 		if setup_step.call() != OK:
 			quit(1)
 			return
-	
+
 	load_test_suite_script()
-	
-	clean_up_before_test()
+
+	if clean_up_before_test() != OK:
+		quit(1)
+		return
 	run_tests()
 	quit()
 
@@ -71,7 +74,7 @@ func parse_args() -> Error:
 	if args[0] == "--all":
 		run_all = true
 		args.remove_at(0)
-	
+
 	# This script still conforms to [1] but allows 2 arguments for a local test
 	# runner with non-JSON output to eliminate dependence on 'jq'
 	#
@@ -83,18 +86,25 @@ func parse_args() -> Error:
 			]
 		)
 		return ERR_INVALID_PARAMETER
-	
+
 	var slug = args[0]
 	var solution_dir_path = args[1]
 	if len(args) == 3:
 		output_dir_path = args[2]
-	
+
 	# Test folders use dashes, but test files use underscores
 	var gdscript_path = solution_dir_path.path_join(slug.replace("-", "_"))
-	
+
 	solution_script_path = gdscript_path + ".gd"
 	test_suite_script_path = gdscript_path + "_test.gd"
-	
+
+	return OK
+
+
+func check_stderr() -> Error:
+	if OS.get_stderr_type() != OS.STD_HANDLE_FILE:
+		push_error("This runner requires being run with STDERR redirected to /tmp/stderr to capture errors")
+		return ERR_FILE_NOT_FOUND
 	return OK
 
 
@@ -113,15 +123,20 @@ func check_if_required_files_exist() -> Error:
 			]
 		)
 		return ERR_FILE_NOT_FOUND
-	
+
 	return OK
 
 
-func clean_up_before_test() -> void:
+func clean_up_before_test() -> Error:
 	"""
 	Removes the previous `results.json` file, to ensure that the current test suite will not use it.
 	"""
 	file_utils.remove_results_file(output_dir_path)
+	var error_message: String = file_utils.get_error_message()
+	if error_message != "":
+		push_error(error_message)
+		return FAILED
+	return OK
 
 
 func load_solution_script() -> Error:
@@ -130,7 +145,7 @@ func load_solution_script() -> Error:
 	issues, this method will save the `results.json` file with `error` status.
 	"""
 	solution_script = file_utils.load_script(solution_script_path)
-	
+
 	if solution_script == null:
 		var results = {
 			"status": "error",
@@ -139,7 +154,7 @@ func load_solution_script() -> Error:
 		}
 		file_utils.output_results(results, output_dir_path)
 		return ERR_PARSE_ERROR
-	
+
 	return OK
 
 
@@ -160,7 +175,7 @@ func run_tests() -> void:
 	"""
 	var test_results = test_utils.run_tests(solution_script, test_suite_script)
 	var results = {}
-	
+
 	# Check if any tests were executed
 	if len(test_results) == 0:
 		results = {
@@ -173,7 +188,7 @@ func run_tests() -> void:
 			"status": "pass",
 			"tests": test_results,
 		}
-		
+
 		# If any of the tests failed, change the global status to `fail`
 		for test_result in test_results:
 			if test_result["status"] != "pass":
@@ -198,5 +213,5 @@ func run_tests() -> void:
 					]
 					filtered_results.append(test_result)
 			results["tests"] = filtered_results
-	
+
 	file_utils.output_results(results, output_dir_path)

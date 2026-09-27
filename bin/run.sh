@@ -45,6 +45,7 @@ cd "$SCRIPT_DIR" || exit 1
 
 # Run the tests for the provided implementation file
 godot --headless -s ./test_runner.gd 2>/tmp/stderr -- --all "${slug}" "${solution_dir}" "${output_dir}"
+cat /tmp/stderr >&2
 
 # Switch back to calling dir
 cd "$OLD_DIR" || exit 1
