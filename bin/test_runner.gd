@@ -144,12 +144,26 @@ func load_solution_script() -> Error:
 	Loads the solution script and saves it in a global variable. In case of any
 	issues, this method will save the `results.json` file with `error` status.
 	"""
+	# Make sure the STDERR file is empty.
+	file_utils.get_error_message()
 	solution_script = file_utils.load_script(solution_script_path)
 
 	if solution_script == null:
+		var message: String = "The solution file could not be parsed."
+		# Extract the error message, up until the "Failed to load" line
+		# which is specific to the test runner, not the user's solution.
+		var error_message: String = file_utils.get_error_message()
+		if error_message != "":
+			var msg = []
+			var stop = 'ERROR: Failed to load script "%s" with error "Parse error".' % solution_script_path
+			for line in error_message.split("\n"):
+				if line == stop:
+					break
+				msg.append(line)
+			message += "\n" + "\n".join(msg)
 		var results = {
 			"status": "error",
-			"message": "The solution file could not be parsed.",
+			"message": message,
 			"tests": [],
 		}
 		file_utils.output_results(results, output_dir_path)
