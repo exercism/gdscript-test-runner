@@ -28,4 +28,4 @@ docker run \
     --volume "${PWD}/bin/run-tests.sh:/opt/test-runner/bin/run-tests.sh" \
     --workdir /opt/test-runner \
     --entrypoint /opt/test-runner/bin/run-tests.sh \
-    exercism/gdscript-test-runner
+    exercism/gdscript-test-runner "$@"

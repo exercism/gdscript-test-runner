@@ -1,6 +1,6 @@
 {
   "version": 2,
   "status": "error",
-  "message": "The solution file could not be parsed.\nSCRIPT ERROR: Parse Error: Unexpected identifier \"int\" in class body.\n          at: GDScript::reload (/opt/test-runner/tests/example-syntax-error/example_syntax_error.gd:1)\n          GDScript backtrace (most recent call first):\n              [0] load_script (res://utils/file_utils.gd:88)\n              [1] load_solution_script (res://test_runner.gd:149)\n              [2] _init (res://test_runner.gd:31)",
+  "message": "The solution file could not be parsed.\nSCRIPT ERROR: Parse Error: Unexpected identifier \"int\" in class body.\n          at: GDScript::reload (/opt/test-runner/tests/example-syntax-error/example_syntax_error.gd:1)\n          GDScript backtrace (most recent call first):\n              [0] load_script (res://utils/file_utils.gd:LINE)\n              [1] load_solution_script (res://test_runner.gd:LINE)\n              [2] _init (res://test_runner.gd:LINE)",
   "tests": []
 }

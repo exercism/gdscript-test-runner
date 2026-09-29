@@ -20,9 +20,9 @@ for test_dir in tests/*; do
     expected_results="${test_dir_path}/expected_results.json"
 
     bin/run.sh "${test_dir_name}" "${test_dir_path}" "${test_dir_path}"
+    sed -i 's@(\(res://[a-z_/]\+.gd\):[0-9]\+)@(\1:LINE)@g' "${actual_results}"
 
-    # Uncomment to update the `expected_results.json` files.
-    # cp "${actual_results}" "${expected_results}"
+    [[ $1 == "--regen" ]] && cp "${actual_results}" "${expected_results}"
     if [[ -e "${actual_results}" ]]; then
         echo "${test_dir_name}: comparing results.json to expected_results.json"
         if ! diff "${actual_results}" "${expected_results}"; then
