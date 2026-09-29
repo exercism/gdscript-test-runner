@@ -1,4 +1,4 @@
-var file_utils: Object = null
+var file_utils: Object = preload("file_utils.gd").new()
 
 
 func extract_method(script: Object, method_name: String) -> String:

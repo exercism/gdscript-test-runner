@@ -1,8 +1,8 @@
 extends SceneTree
 
 # Utils
-var file_utils: Object = null
-var test_utils: Object = null
+var file_utils: Object = preload("utils/file_utils.gd").new()
+var test_utils: Object = preload("utils/test_utils.gd").new()
 
 # Paths
 var output_dir_path: String = ""
@@ -17,8 +17,6 @@ var run_all: bool = false
 
 
 func _init():
-	load_utils_scripts()
-
 	# Calling `quit(1)` doesn't stop the program immediately, so a `return` is necessary.
 	# That's why errors are checked directly in `_init()`, instead of calling `quit(1)`
 	# in each method.
@@ -39,16 +37,6 @@ func _init():
 		return
 	run_tests()
 	quit()
-
-
-func load_utils_scripts() -> void:
-	"""
-	Loads all utils scripts required by the test runner, storing them in corresponding
-	global variables.
-	"""
-	file_utils = load_utils_script("file_utils.gd")
-	test_utils = load_utils_script("test_utils.gd")
-	test_utils.file_utils = file_utils
 
 
 func load_utils_script(file_name: String) -> Object:
