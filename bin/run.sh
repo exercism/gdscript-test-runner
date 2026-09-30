@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Synopsis:
 # Run the test runner on a solution.
@@ -16,7 +16,7 @@
 # ./bin/run.sh two-fer path/to/solution/folder/ path/to/output/directory/
 
 # If any required arguments is missing, print the usage and exit
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+if (( $# != 3 )) || [[ -z "$3" || -z "$2" || -z "$3" ]]; then
     echo "usage: ./bin/run.sh exercise-slug path/to/solution/folder/ path/to/output/directory/"
     exit 1
 fi
@@ -44,8 +44,7 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$SCRIPT_DIR" || exit 1
 
 # Run the tests for the provided implementation file
-godot --headless -s ./test_runner.gd 2>/tmp/stderr -- --all "${slug}" "${solution_dir}" "${output_dir}"
-cat /tmp/stderr >&2
+godot --headless -s ./test_runner.gd 2>/tmp/stderr -- --all --json "${output_dir}/results.json" "${slug}" "${solution_dir}"
 
 # Switch back to calling dir
 cd "$OLD_DIR" || exit 1

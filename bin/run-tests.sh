@@ -26,12 +26,13 @@ for test_dir in tests/*; do
     if [[ -e "${actual_results}" ]]; then
         echo "${test_dir_name}: comparing results.json to expected_results.json"
         if ! diff "${actual_results}" "${expected_results}"; then
+	    echo "${test_dir_name}: FAIL - output does not match"
             exit_code=1
         fi
         rm "${actual_results}"
     else
         exit_code=1
-        echo "${test_dir_name}: results.json is missing!!"
+        echo "${test_dir_name}: FAIL - results.json is missing!!"
     fi
 done
 
