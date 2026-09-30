@@ -20,6 +20,7 @@ class ErrorReader:
 	]
 	var already_processed_bytes: int = 0
 	var filename: String = ""
+	var color_sequence = RegEx.create_from_string("\\e\\[\\d[\\d;]*m")
 
 	func _init(filename: String) -> void:
 		self.already_processed_bytes = 0
@@ -61,9 +62,7 @@ class ErrorReader:
 
 		# By default, Godot's error messages are printed with colors. To include the output in the
 		# `results.json` file, color markers need to be removed first.
-		var color_sequence = RegEx.new()
-		color_sequence.compile("\\e\\[\\d[\\d;]*m")
-		error_output = color_sequence.sub(error_output, "", true)
+		error_output = self.color_sequence.sub(error_output, "", true)
 
 		# Filter out the expected error messages
 		for expected_error in EXPECTED_GODOT_ERRORS:
@@ -106,7 +105,6 @@ class ResultWriter:
 			return print_friendly_results(results)
 		else:
 			return write_results_file(results)
-
 
 	func print_friendly_results(results: Dictionary) -> Error:
 		"""
@@ -232,30 +230,35 @@ class Runner:
 	var solution: Object = null
 	var stderr: ErrorReader = null
 	var result_writer: ResultWriter = null
-	var run_all: bool = false
 
-	func _init(test_suite: Object, solution: Object, stderr: ErrorReader, run_all: bool, result_writer: ResultWriter) -> void:
+	func _init(test_suite: Object, solution: Object, stderr: ErrorReader, result_writer: ResultWriter) -> void:
 		self.test_suite = test_suite
 		self.solution = solution
 		self.stderr = stderr
-		self.run_all = run_all
 		self.result_writer = result_writer
 
-
-	func extract_method(method_name: String) -> String:
+	func extract_methods() -> Dictionary:
 		"""Extract the source code of a method from a script."""
 		var in_func: bool = false
 		var parts = []
+		var methods: Dictionary = {}
+		var name: String = ""
+		var func_re: RegEx = RegEx.create_from_string('^func ([^(]+)\\(')
 		for line in self.test_suite.get_script().source_code.split("\n"):
 			if not in_func:
-				if line.begins_with("func %s(" % method_name):
+				var matched = func_re.search(line)
+				if matched:
 					in_func = true
+					name = matched.get_strings()[1]
+					parts = []
 			elif not line.begins_with("\t") and not line.begins_with(" "):
-				break
+				if in_func:
+					in_func = false
+					methods[name] = "\n".join(parts)
 			else:
 				parts.append(line)
 
-		return "\n".join(parts)
+		return methods
 
 	func get_failed_test_message(actual, expected) -> String:
 		"""
@@ -299,6 +302,7 @@ class Runner:
 		pass. Otherwise, it will fail, with a relevant message being set by this method.
 		"""
 		var test_results = []
+		var test_codes = self.extract_methods()
 
 		for method in self.test_suite.get_method_list():
 			if not method["name"].begins_with("test_"):
@@ -333,7 +337,7 @@ class Runner:
 						actual, expected
 					)
 
-				var test_code = self.extract_method(method["name"])
+				var test_code = test_codes[method["name"]]
 				# The code would be cleaner if the test suite actually checked the values.
 				# Instead, the test suite returns an array with two values which are compared (above).
 				# This `replace()` hides some of that implementation detail by communicating that the
@@ -351,7 +355,7 @@ class Runner:
 
 		return test_results
 
-	func run() -> void:
+	func run(run_all: bool) -> void:
 		"""
 		Executes the current suite against the current solution. Stores the results in the
 		`results.json` file in the output dir.
@@ -361,16 +365,9 @@ class Runner:
 
 		# Check if any tests were executed
 		if len(test_results) == 0:
-			results = {
-				"status": "error",
-				"message": "No tests were executed.",
-				"tests": [],
-			}
+			results = {"status": "error", "message": "No tests were executed.", "tests": []}
 		else:
-			results = {
-				"status": "pass",
-				"tests": test_results,
-			}
+			results = {"status": "pass", "tests": test_results}
 
 			# If any of the tests failed, change the global status to `fail`
 			for test_result in test_results:
@@ -378,7 +375,7 @@ class Runner:
 					results["status"] = "fail"
 					break
 
-			if not self.run_all and results["status"] != "pass":
+			if not run_all and results["status"] != "pass":
 				var success_count: int = 0
 				for test_result in test_results:
 					if test_result["status"] == "pass":
@@ -427,11 +424,7 @@ func load_solution_script(solution_script_path: String, result_writer: ResultWri
 					break
 				msg.append(line)
 			message += "\n" + "\n".join(msg)
-		var results = {
-			"status": "error",
-			"message": message,
-			"tests": [],
-		}
+		var results = {"status": "error", "message": message, "tests": []}
 		result_writer.write(results)
 		return [null, ERR_PARSE_ERROR]
 
@@ -470,5 +463,5 @@ func _init():
 
 	var test_suite = load(args.test_suite_script_path).new()
 
-	Runner.new(test_suite, solution, stderr, args.run_all, result_writer).run()
+	Runner.new(test_suite, solution, stderr, result_writer).run(args.run_all)
 	quit()
