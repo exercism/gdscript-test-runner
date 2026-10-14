@@ -1,2 +1,5 @@
-func add_2_numbers(a, b):
-    return a + b
+func mult(a, b):
+	var out = 0
+    for i in range(a):
+        out += b
+    return out
