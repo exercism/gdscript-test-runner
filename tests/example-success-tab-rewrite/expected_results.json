@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "status": "pass",
+  "tests": [
+    {
+      "name": "test_1_and_2_equals_3",
+      "status": "pass",
+      "message": null,
+      "test_code": "assert_equal [solution_script.add_2_numbers(1, 2), 3]"
+    },
+    {
+      "name": "test_10_and_20_equals_30",
+      "status": "pass",
+      "message": null,
+      "test_code": "assert_equal [solution_script.add_2_numbers(10, 20), 30]"
+    }
+  ]
+}
