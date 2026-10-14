@@ -411,7 +411,11 @@ func load_solution(path: String) -> Object:
 			lines.append(line)
 		else:
 			changed = true
-			lines.append(replace.sub(line, "\t", true, 0, m.get_end()))
+			var new = []
+			for i in range(m.get_end() / 4):
+				new.append("\t")
+			new.append(line.substr(m.get_end()))
+			lines.append("".join(new))
 	if not changed:
 		return load(path).new()
 
