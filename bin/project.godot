@@ -1,0 +1,11 @@
+; This file makes bin/ a Godot project, so `godot -s ./test_runner.gd` starts faster.
+; With no project file, the Godot editor binary loads its editor settings and
+; builds the editor theme (icons, fonts and styles) on every run.
+; That took about 0.4 s of each run.
+
+config_version=5
+
+[debug]
+
+; Godot writes a log file for every project run. The test runner doesn't need it.
+file_logging/enable_file_logging.pc=false
